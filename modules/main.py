@@ -23,7 +23,7 @@ from pyrogram.types.messages_and_media import message
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 OWNER = int(os.environ.get("OWNER", 7570884654))
-CHANNEL_ID = int(getenv("CHANNEL_ID", "-1002341507214"))
+CHANNEL_ID = int(os.environ.get("CHANNEL_ID", "-1002341507214"))
 
 async def subscribe(app, message):
    update_channel = CHANNEL_ID
