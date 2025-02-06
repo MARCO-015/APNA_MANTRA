@@ -15,8 +15,24 @@ from utils import progress_bar
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
+CHANNEL_ID = int(os.environ.get("CHANNEL_ID", "-1002341507214"))
 
-
+async def subscribe(app, message):
+   update_channel = CHANNEL_ID
+   url = await gen_link(app, update_channel)
+   if update_channel:
+      try:
+         user = await app.get_chat_member(update_channel, message.from_user.id)
+         if user.status == "kicked":
+            await message.reply_text("You are Banned. Contact -- @AJ_PYTHON_15")
+            return 1
+      except UserNotParticipant:
+        caption = f"Join our channel to use the bot"
+        await message.reply_photo(photo="https://envs.sh/m5J.jpg",caption=caption, reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Join Now...", url=f"{url}")]]))
+        return 1
+      except Exception:
+         await message.reply_text("Something Went Wrong. Contact us @AJ_PYTHON_15...")
+         return 1
 def duration(filename):
     result = subprocess.run(["ffprobe", "-v", "error", "-show_entries",
                              "format=duration", "-of",
