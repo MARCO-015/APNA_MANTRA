@@ -1,5 +1,4 @@
 import os
-import getenv
 import time
 import datetime
 import aiohttp
@@ -12,11 +11,10 @@ import subprocess
 import concurrent.futures
 
 from utils import progress_bar
-
+from vars import CHANNEL_ID
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
-CHANNEL_ID = int(getenv("CHANNEL_ID", "-1002341507214"))
 
 async def subscribe(app, message):
    update_channel = CHANNEL_ID
