@@ -15,7 +15,7 @@ from utils import progress_bar
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
-CHANNEL_ID = int(os.environ.get("CHANNEL_ID", "-1002341507214"))
+CHANNEL_ID = int(getenv("CHANNEL_ID", "-1002341507214"))
 
 async def subscribe(app, message):
    update_channel = CHANNEL_ID
