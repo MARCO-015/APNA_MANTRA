@@ -15,6 +15,9 @@ from vars import CHANNEL_ID
 from pyrogram import Client, filters
 from pyrogram.types import Message
 
+async def gen_link(app,chat_id):
+   link = await app.export_chat_invite_link(chat_id)
+   return link
 
 async def subscribe(app, message):
    update_channel = CHANNEL_ID
