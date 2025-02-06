@@ -1,4 +1,4 @@
-import os
+from os import getenv
 
 api_id    = int(os.environ.get("api_id", "21258655"))
 api_hash  = os.environ.get("api_hash", "a26c4e545d570521926e47a77964cb1d")
