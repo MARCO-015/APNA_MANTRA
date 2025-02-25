@@ -176,7 +176,7 @@ async def account_login(bot: Client, m: Message):
             if '/master.mpd' in url and not '/drm/' in url:
                 id = url.split("/")[-2]
                 pwtoken = os.getenv('pwtoken')
-                url = f'https://madxapi-d0cbf6ac738c.herokuapp.com/{id}/master.m3u8?token={pwtoken}'
+                url = f'https://pw.maxstudy.site/?id={id}&token={pwtoken}'
                 print(url)
 
             elif 'cpvod.testbook' in url:
